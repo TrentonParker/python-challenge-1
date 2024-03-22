@@ -53,6 +53,20 @@ menu = {
 # 1. Set up order list. Order list will store a list of dictionaries for
 # menu item name, item price, and quantity ordered
 
+order_list = []
+[
+  {
+    "Item name": "string",
+    "Price": float,
+    "Quantity": int
+  },
+  {
+    "Item name": "string",
+    "Price": float,
+    "Quantity": int
+  },
+]
+
 
 # Launch the store and present a greeting to the customer
 print("Welcome to the variety food truck.")
@@ -118,32 +132,46 @@ while place_order:
                     }
                     i += 1
             # 2. Ask customer to input menu item number
-
+            input('Select item from menu: ')
 
             # 3. Check if the customer typed a number
-
+            menu_selection = input('Select item from menu: ')
                 # Convert the menu selection to an integer
-
-
+            match menu_selection:
+                case str(number) if number.isdigit():
+                    menu_selection = int(number)  
+                    print('You selected item: ', menu_selection)  
+                
+                    
                 # 4. Check if the menu selection is in the menu items
-
+                case _: 
+                    if 1 <= menu_selection <= len(menu_items):
                     # Store the item name as a variable
-
+                        selected_item = menu_items[menu_selection]["Item name"]
 
                     # Ask the customer for the quantity of the menu item
-
+                        quantity = input(f"Enter quantity for {selected_item}: ")
 
                     # Check if the quantity is a number, default to 1 if not
-
+                        match quantity:
+                            case str(num) if num.isdigit():
+                                quantity = int(num)
+                            case _: 
+                                quantity = 1
 
                     # Add the item name, price, and quantity to the order list
-
+                        order_list.append({
+                            "Item name": selected_item,
+                            "Price": menu_items[menu_selection]["Price"],
+                            "Quantity": quantity
+                        })
 
                     # Tell the customer that their input isn't valid
-
+                    else:
+                        print("Invalid menu selection. Pick an item number and try again! ")
 
                 # Tell the customer they didn't select a menu option
-
+                    print("You didn't select a menu option")
         else:
             # Tell the customer they didn't select a menu option
             print(f"{menu_category} was not a menu option.")
@@ -156,21 +184,26 @@ while place_order:
         keep_ordering = input("Would you like to keep ordering? (Y)es or (N)o ")
 
         # 5. Check the customer's input
-
+        match keep_ordering.lower():
                 # Keep ordering
-
+            case "y":
+                place_order = True
+                break
                 # Exit the keep ordering question loop
+            case "n":
+                place_order = False
 
                 # Complete the order
-
+                print("Your order is complete.")
                 # Since the customer decided to stop ordering, thank them for
                 # their order
-
+                print("Thanks for your order!")
                 # Exit the keep ordering question loop
-
+                break
 
                 # Tell the customer to try again
-
+            case _: 
+                print("Invalid answer. Please enter (Y)es or (N)o.")
 
 # Print out the customer's order
 print("This is what we are preparing for you.\n")
@@ -182,10 +215,12 @@ print("Item name                 | Price  | Quantity")
 print("--------------------------|--------|----------")
 
 # 6. Loop through the items in the customer's order
-
+for item in order_list:
     # 7. Store the dictionary items as variables
-
-
+    item_name = item["Item name"]
+    item_price = item["Price"]
+    quantity = item["Quantity"]
+    
     # 8. Calculate the number of spaces for formatted printing
 
 
