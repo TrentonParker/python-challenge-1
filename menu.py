@@ -132,10 +132,9 @@ while place_order:
                     }
                     i += 1
             # 2. Ask customer to input menu item number
-            input('Select item from menu: ')
+            menu_selection = input('Select item from menu: ')
 
             # 3. Check if the customer typed a number
-            menu_selection = input('Select item from menu: ')
                 # Convert the menu selection to an integer
             match menu_selection:
                 case str(number) if number.isdigit():
@@ -143,8 +142,7 @@ while place_order:
                     print('You selected item: ', menu_selection)  
                 
                     
-                # 4. Check if the menu selection is in the menu items
-                case _: 
+                # 4. Check if the menu selection is in the menu items 
                     if 1 <= menu_selection <= len(menu_items):
                     # Store the item name as a variable
                         selected_item = menu_items[menu_selection]["Item name"]
@@ -171,7 +169,7 @@ while place_order:
                         print("Invalid menu selection. Pick an item number and try again! ")
 
                 # Tell the customer they didn't select a menu option
-                    print("You didn't select a menu option")
+                        print("You didn't select a menu option")
         else:
             # Tell the customer they didn't select a menu option
             print(f"{menu_category} was not a menu option.")
@@ -203,7 +201,7 @@ while place_order:
 
                 # Tell the customer to try again
             case _: 
-                print("Invalid answer. Please enter (Y)es or (N)o.")
+                print("Invalid input, try again. Please enter (Y)es or (N)o.")
 
 # Print out the customer's order
 print("This is what we are preparing for you.\n")
@@ -223,7 +221,7 @@ for item in order_list:
     quantity = item["Quantity"]
     # 8. Calculate the number of spaces for formatted printing
     num_item_spaces = 26 - len(item_name)
-    num_price_spaces = 8 - len(str(item_price))
+    num_price_spaces = 6 - len(str(item_price))
     num_quantity_spaces = 10 - len(str(quantity))
 
 
