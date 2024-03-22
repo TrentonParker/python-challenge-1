@@ -1,2 +1,7 @@
 # python-challenge-1
-module 2 challenge
+
+# Module 2 Challenge
+
+This one is about to make me break my keyboard :) :) :)
+
+## 😄😲😵
