@@ -237,4 +237,5 @@ for item in order_list:
     total_cost += item_price * quantity
 # Multiply the price by quantity for each item in the order list, then sum()
 # and print the prices.
-    print(f'                           Total cost: {total_cost}')
+    print(f'                         Total Cost: ${total_cost}')
+
